@@ -1,7 +1,7 @@
 <Container version="2">
   <!-- Delete this file if your repository does not ship Docker apps. -->
   <Name>YT-DLP Web Player</Name>
-  <Repository>ghcr.io/matszwe02/ytdlp_web_player:latest</Repository>
+  <Repository>ghcr.io/matszwe02/ytdlp_web_player:stable</Repository>
   <Registry>https://ghcr.io</Registry>
   <Network>bridge</Network>
   <MyIP/>
