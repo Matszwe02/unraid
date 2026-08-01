@@ -1,7 +1,7 @@
 name: Generate Unraid XML Config
 
 on:
-  workflow_dispatch
+  workflow_dispatch: # Allows manual trigger
   push:
     branches:
       - main
