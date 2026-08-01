@@ -37,6 +37,9 @@ jobs:
           git diff --quiet --exit-code templates/ytdlp-web-player.xml || echo "changed=true" >> "$GITHUB_OUTPUT"
           git diff templates/ytdlp-web-player.xml
 
+      - name: Check xml validity
+        run: python check.py -f templates/ytdlp-web-player.xml 
+
       - name: Commit changes
         id: commit_changes
         run: |
