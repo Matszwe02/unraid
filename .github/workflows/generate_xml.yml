@@ -27,16 +27,29 @@ jobs:
       - name: Run XML generation script
         run: python generate_config_xml.py
 
-      - name: Debug Check for changes
+      - name: Debug - Check for changes
+        id: check_changes
         run: |
           git status
+          git diff --quiet --exit-code templates/ytdlp-web-player.xml || echo "changed=true" >> "$GITHUB_OUTPUT"
           git diff templates/ytdlp-web-player.xml
 
-      - name: Commit and push if changed
+      - name: Commit changes
+        id: commit_changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "github-actions@github.com"
           git add templates/ytdlp-web-player.xml
-          git diff --quiet --exit-code || (git commit -m "Update ytdlp-web-player.xml" && git push)
+          git commit -m "Update ytdlp-web-player.xml"
+          echo "committed=true" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Only run if there are changes to commit
+        if: steps.check_changes.outputs.changed == 'true'
+
+      - name: Push changes
+        run: git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Only run if commit step succeeded
+        if: steps.commit_changes.outputs.committed == 'true'
