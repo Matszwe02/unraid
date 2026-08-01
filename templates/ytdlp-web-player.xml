@@ -19,6 +19,22 @@
   <Config Name="WebUI" Target="5000" Default="5000" Mode="tcp" Description="HTTP port for the WebUI." Type="Port" Display="always" Required="true" Mask="false"/>
 
 <!-- config start -->
+  <Config Name="App Title" Target="APP_TITLE" Default="YT-DLP Player"  Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Theme Color" Target="THEME_COLOR" Default="#ff7300"  Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Generate Sprite Below" Target="GENERATE_SPRITE_BELOW" Default="1800" Description="generate sprites for videos below this duration (0 to disable)" Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Amoled Bg" Target="AMOLED_BG" Default="false"  Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Max Video Age" Target="MAX_VIDEO_AGE" Default="3600" Description="inactivity after which video is removed" Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Max Video Duration" Target="MAX_VIDEO_DURATION" Default="36000"  Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Default Quality" Target="DEFAULT_QUALITY" Default="720"  Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Max Quality" Target="MAX_QUALITY" Default="2160"  Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Autoplay" Target="AUTOPLAY" Default="false"  Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Always Transcode" Target="ALWAYS_TRANSCODE" Default="false"  Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Disable Transcoding" Target="DISABLE_TRANSCODING" Default="false" Description="useful for low-performance machines, only basic features will work" Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Autoskip Sb Segments" Target="AUTOSKIP_SB_SEGMENTS" Default="" Description="comma separated, e.g. selfpromo,outro,sponsor,preview,interaction,intro,music_offtopic" Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Cookies Only On Failure" Target="COOKIES_ONLY_ON_FAILURE" Default="true" Description="only use cookies if necessary" Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Auto Bg Playback" Target="AUTO_BG_PLAYBACK" Default="true" Description="keep playing videos in background after leaving application or locking screen" Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Audio Visualizer" Target="AUDIO_VISUALIZER" Default="false"  Type="Variable"  Display="always" Required="false" Mask="false"/>
+  <Config Name="Proxy" Target="PROXY" Default="" Description="proxy for accessing video sources, e.g. http://127.0.0.1:8888" Type="Variable"  Display="always" Required="false" Mask="false"/>
 <!-- config end -->
 
 </Container>
