@@ -27,7 +27,7 @@ jobs:
       - name: Run XML generation script
         run: python generate_config_xml.py
 
-      - name: Debug: Check for changes
+      - name: Debug Check for changes
         run: |
           git status
           git diff templates/ytdlp-web-player.xml
