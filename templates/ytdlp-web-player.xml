@@ -15,4 +15,7 @@
   <WebUI>http://[IP]:[PORT:5000]</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/matszwe02/unraid/main/templates/ytdlp-web-player.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/matszwe02/ytdlp_web_player/main/src/static/favicon.svg</Icon>
+
+  <Config Name="WebUI" Target="5000" Default="5000" Mode="tcp" Description="HTTP port for the WebUI." Type="Port" Display="always" Required="true" Mask="false"/>
+
 </Container>
