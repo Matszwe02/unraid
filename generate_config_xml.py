@@ -1,6 +1,7 @@
 import re
 import argparse
 import requests
+from xml.sax.saxutils import escape
 
 def parse_env_file():
     config_vars = []
@@ -35,6 +36,11 @@ def generate_xml_config(config_vars):
         value = var['value']
         description = var['description']
 
+        # Escape XML special characters (&, <, >, ") for use inside attributes
+        escape_attr = lambda text: escape(text, {'"': '&quot;'})
+        value = escape_attr(value)
+        description = escape_attr(description)
+
         # Use the description directly from the .env file.
         # Ensure description is only added if it has content
         desc_attr = f'Description="{description}"' if description else ''
@@ -63,7 +69,7 @@ xml_configs = generate_xml_config(config_vars)
 with open('templates/ytdlp-web-player.xml', 'r') as f:
     xml = f.read()
 
-out = re.sub(r'<!-- config start -->.*?<!-- config end -->', f'<!-- config start -->\n{xml_configs}\n<!-- config end -->', xml, flags=re.DOTALL)
+out = re.sub(r'<!-- config start -->.*?<!-- config end -->', lambda _: f'<!-- config start -->\n{xml_configs}\n<!-- config end -->', xml, flags=re.DOTALL)
 
 with open('templates/ytdlp-web-player.xml', 'w') as f:
     f.write(out)
